@@ -1,12 +1,15 @@
 #!/bin/bash
 
+sudo apt-get update && sudo apt-get upgrade
+sudo apt-get install curl -y
+
 curl -sfL https://get.k3s.io | sh -s - \
 	--disable metrics-server \
 	--disable local-storage \
-	--node-ip 192.168.56.110
+	--node-ip 192.168.56.110 --flannel-iface=eth1
 
 sleep 10
 
-alias k='/usr/local/bin/kubectl'
 
-# /usr/local/bin/kubectl apply -f /vagrant/confs/
+/usr/local/bin/kubectl apply -f /vagrant/confs/
+
