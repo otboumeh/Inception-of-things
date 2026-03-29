@@ -1,0 +1,14 @@
+Vagrant.configure("2") do |config|
+	config.vm.box = "debian/trixie64"
+
+	config.vm.define "eandresS" do |server|
+		server.vm.hostname = "eandresS"
+		server.vm.network "private_network", ip: "192.168.56.110"
+		server.vm.provider "virtualbox" do |vb|
+			vb.name = "eandresS"
+			vb.cpus = 1
+			vb.memory = 512
+		end
+	server.vm.provision "shell", path: "scripts/setup.sh"
+	end
+end
