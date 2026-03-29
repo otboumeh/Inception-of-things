@@ -6,8 +6,8 @@ Vagrant.configure("2") do |config|
 		server.vm.network "private_network", ip: "192.168.56.110"
 		server.vm.provider "virtualbox" do |vb|
 			vb.name = "eandresS"
-			vb.cpus = 1
-			vb.memory = 512
+			vb.cpus = 2
+			vb.memory = 2048
 		end
 	server.vm.provision "shell", path: "scripts/setup.sh"
 	end
