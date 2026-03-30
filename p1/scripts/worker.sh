@@ -1,4 +1,7 @@
 #!/bin/bash
+
+sudo apt-get install curl -y
+
 # Esperar a que el archivo del token aparezca en la carpeta compartida
 while [ ! -f /vagrant/node-token ]; do
   sleep 2
