@@ -7,7 +7,7 @@ spec:
   selector:
     matchLabels:
       app: app-two
-  templates:
+  template:
     metadata:
       labels:
         app: app-two
@@ -17,7 +17,7 @@ spec:
           image: paulbouwer/hello-kubernetes:1.10
           ports:
             - containerPort: 8080
-            env:
+          env:
             - name: MESSAGE
               value: "Hello from app2"
 ---

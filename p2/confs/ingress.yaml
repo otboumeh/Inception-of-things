@@ -4,31 +4,35 @@ metadata:
   name: app-ingress
   annotations:
     ingress.kubernetes.io/ssl-redirect: "false"
-  spec:
-    ingressClassName: traefik
-    defaultBackend:
-      service:
-        name: app-three-service
-        port:
-          number: 80
-      rules:
-      - host: app1.com
-        http:
-          paths:
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: app-one-service
-                port:
-                  number: 80
-      - host: app2.com
-        http:
-          paths:
-            - path: /
-              pathType: Prefix
-              backend:
-                service:
-                  name: app-two-service
-                  port:
-                    number: 80
+spec:
+  ingressClassName: traefik
+  rules:
+  - host: app1.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: app-one-service
+            port:
+              number: 80
+  - host: app2.com
+    http:
+      paths:
+        - path: /
+          pathType: Prefix
+          backend:
+            service:
+              name: app-two-service
+              port:
+                number: 80
+  - http:
+      paths:
+        - path: /
+          pathType: Prefix
+          backend:
+            service:
+              name: app-three-service
+              port:
+                number: 80
