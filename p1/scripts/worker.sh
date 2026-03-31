@@ -1,5 +1,5 @@
 #!/bin/bash
-
+sudo apt-get update -y
 sudo apt-get install curl -y
 
 # Esperar a que el archivo del token aparezca en la carpeta compartida
