@@ -1,11 +1,12 @@
 #!/bin/bash
 sudo apt-get update -y
-sudo apt-get install curl -y
+sudo apt-get install curl net-tools -y
 
-export INSTALL_K3S_EXEC="--write-kubeconfig-mode 644 --bind-address=192.168.56.110 --node-ip=192.168.56.110"
+# Añadimos --flannel-iface=eth1
+export INSTALL_K3S_EXEC="--write-kubeconfig-mode 644 --bind-address=192.168.56.110 --node-ip=192.168.56.110 --flannel-iface=eth1"
 
-# Instalación de K3s Server
 curl -sfL https://get.k3s.io | sh -
 
-# Copiar el token a la carpeta compartida para que el Worker lo pueda leer
+# Damos tiempo a que se genere el archivo
+sleep 10
 sudo cp /var/lib/rancher/k3s/server/node-token /vagrant/node-token
