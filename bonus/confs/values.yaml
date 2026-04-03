@@ -1,0 +1,21 @@
+# Parámetros globales para reducir el consumo
+global:
+  hosts:
+    domain: local.com
+    externalIP: 127.0.0.1
+  ingress:
+    configureCertmanager: false # Desactiva la configuración automática de certificados
+    enabled: false # Usaremos el Ingress de k3d/Traefik
+
+# Nueva forma de desactivar cert-manager (versión 18.x+)
+installCertmanager: false
+
+# Estos componentes aún mantienen el formato .install en la mayoría de versiones
+prometheus:
+  install: false
+gitlab-runner:
+  install: false
+
+# Desactivamos también el toolbox para ahorrar más RAM
+gitlab-toolbox:
+  install: false
